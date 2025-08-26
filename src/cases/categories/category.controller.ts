@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-
 import { CategoryService } from "./category.service";
 import { Category } from "./category.entity";
 import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseUUIDPipe, Post, Put } from "@nestjs/common";
