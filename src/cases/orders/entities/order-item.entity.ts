@@ -1,8 +1,6 @@
-import { Costumer } from "src/cases/costumer/costumer.entity";
-import { Product } from "src/cases/products/product.entity";
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Product } from "../../products/entities/product.entity";
+import { Column,  Entity, ManyToOne, PrimaryGeneratedColumn, } from "typeorm";
 import { Order } from "./order.entity";
-
 
 @Entity('order-item')
 export class OrderItem {
@@ -12,12 +10,12 @@ export class OrderItem {
     @ManyToOne(() => Order)
     order: Order;
 
-    @ManyToOne(() => Product, { eager: true, nullable: false })
+    @ManyToOne(() => Product, {nullable: false, eager: true})
     product: Product;
 
-    @Column({ nullable: false })
+    @Column({nullable: false})
     quantity: number;
 
-    @Column('decimal', { nullable: true, precision: 10, scale: 2 })
-    total: number;
+    @Column({type: 'decimal', precision: 10, scale: 2, nullable: true})
+    value: number;
 }

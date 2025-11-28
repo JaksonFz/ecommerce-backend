@@ -1,16 +1,17 @@
-import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoryModule } from './cases/categories/category.module';
 import { BrandModule } from './cases/brands/brand.module';
 import { ProductModule } from './cases/products/product.module';
+import { ConfigModule } from '@nestjs/config';
 import { CityModule } from './cases/cities/city.module';
-import { CostumerModule } from './cases/costumer/costumer.module';
+import { CustomerModule } from './cases/customers/customer.module';
+import { OrderModule } from './cases/orders/entities/order.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -18,7 +19,7 @@ import { CostumerModule } from './cases/costumer/costumer.module';
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
     }),
@@ -26,7 +27,8 @@ import { CostumerModule } from './cases/costumer/costumer.module';
     BrandModule,
     ProductModule,
     CityModule,
-    CostumerModule
+    CustomerModule,
+    OrderModule,
   ],
 })
 export class AppModule { }

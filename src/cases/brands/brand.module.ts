@@ -9,4 +9,5 @@ import { BrandController } from "./brand.controller";
     providers: [BrandService],
     controllers: [BrandController]
 })
-export class BrandModule { }
+export class BrandModule {}
+
