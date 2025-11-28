@@ -15,27 +15,27 @@ export class CustomerService {
     constructor(
         @InjectRepository(Customer)
         private readonly repository: Repository<Customer>
-    ) {}
+    ) { }
 
     findAll(): Promise<Customer[]> {
         return this.repository.find();
     }
 
     findById(id: string): Promise<Customer | null> {
-        return this.repository.findOneBy({id: id});
+        return this.repository.findOneBy({ id: id });
     }
 
     findBySupabaseId(supabaseId: string): Promise<Customer | null> {
-        return this.repository.findOneBy({supabaseId: supabaseId});
+        return this.repository.findOneBy({ supabaseId: supabaseId });
     }
 
     save(customer: Customer): Promise<Customer> {
         return this.repository.save(customer);
     }
 
-    async remove(id: string):Promise<void> {
+    async remove(id: string): Promise<void> {
 
         await this.repository.delete(id);
     }
-} 
+}
 
